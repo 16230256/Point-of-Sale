@@ -1,6 +1,8 @@
 package ie.ul.deirdreshanahan.pointofsale;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -60,12 +62,17 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        //to do later worry about menus
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        //code for reset introduce switch
+        switch (item.getItemId()) {
+            case R.id.action_reset:
+                mCurrentItem = new Item();
+                showCurrentItem();
+                return true;
+            case R.id.action_settings:
+              //  startActivity(new Intent(Settings.ACTION_SETTINGS));
+                //take into local settings
+                startActivity(new Intent(Settings.ACTION_LOCALE_SETTINGS));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
